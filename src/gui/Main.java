@@ -24,6 +24,8 @@ public class Main {
 			  (screenSize.height - frameSize.height) / 2);
 
 	frame.setVisible(true);
+        
+        
     }
 
     public static void main(String[] args) {

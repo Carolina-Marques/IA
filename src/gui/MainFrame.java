@@ -349,5 +349,5 @@ class TextFieldSearchParameter_KeyAdapter implements KeyListener {
         if (!Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE) {
             e.consume();
         }
-    }
+    }    
 }

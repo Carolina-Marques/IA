@@ -19,19 +19,27 @@ public class EightPuzzleState extends State implements Cloneable {
     private int[][] matrix;
     private int lineBlank;
     private int columnBlank;
+    public int numberPieces=0;
 
     public EightPuzzleState(int[][] matrix) {
         this.matrix = new int[matrix.length][matrix.length];
-
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 this.matrix[i][j] = matrix[i][j];
-                if (this.matrix[i][j] == 0) {
+                if (this.matrix[i][j] <= 0 || this.matrix[i][j]>=10) {
                     lineBlank = i;
-                    columnBlank = j;
+                    columnBlank = j;                   
+                } else {
+                    /*if(this.matrix[i][j] == this.matrix[i-1][j]){
+                        lineBlank = i;
+                        columnBlank = j;
+                    } else {*/
+                        numberPieces++;
+                    //}
                 }
             }
         }
+        System.out.println("Numero de peças: "+numberPieces);
     }
 
     public void executeAction(Action action) {
