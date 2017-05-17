@@ -7,9 +7,9 @@ import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import utils.ImageLoader;
 
-public class PuzzleTileCellRenderer extends JLabel implements TableCellRenderer {
+public class MontaCargasTileCellRenderer extends JLabel implements TableCellRenderer {
 
-    public PuzzleTileCellRenderer() {
+    public MontaCargasTileCellRenderer() {
         setBackground(Color.WHITE);
         setOpaque(true);
         setFont(new Font("Monospaced", Font.BOLD, 49));

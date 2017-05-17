@@ -1,19 +1,19 @@
-package eightpuzzle;
+package montacargas;
 
 import agent.Action;
 
-public class ActionRight extends Action<EightPuzzleState>{
+public class ActionRight extends Action<MontaCargasState>{
 
     public ActionRight(){
         super(1);
     }
 
-    public void execute(EightPuzzleState state){
+    public void execute(MontaCargasState state){
         state.moveRight();
         state.setAction(this);
     }
 
-    public boolean isValid(EightPuzzleState state){
+    public boolean isValid(MontaCargasState state){
         return state.canMoveRight();
     }
 }

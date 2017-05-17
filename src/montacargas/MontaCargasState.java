@@ -1,11 +1,11 @@
-package eightpuzzle;
+package montacargas;
 
 import agent.Action;
 import agent.State;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EightPuzzleState extends State implements Cloneable {
+public class MontaCargasState extends State implements Cloneable {
 
     static final int[][] goalMatrix = {{0, 0, 0, 0, 0, 0},
                                        {0, 0, 0, 0, 0, 0},
@@ -21,7 +21,7 @@ public class EightPuzzleState extends State implements Cloneable {
     private int columnBlank;
     public int numberPieces=0;
 
-    public EightPuzzleState(int[][] matrix) {
+    public MontaCargasState(int[][] matrix) {
         this.matrix = new int[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -110,11 +110,11 @@ public class EightPuzzleState extends State implements Cloneable {
 
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof EightPuzzleState)) {
+        if (!(other instanceof MontaCargasState)) {
             return false;
         }
 
-        EightPuzzleState o = (EightPuzzleState) other;
+        MontaCargasState o = (MontaCargasState) other;
         if (matrix.length != o.matrix.length) {
             return false;
         }
@@ -142,25 +142,25 @@ public class EightPuzzleState extends State implements Cloneable {
 
     @Override
     public Object clone() {
-        return new EightPuzzleState(matrix);
+        return new MontaCargasState(matrix);
     }
     //Listeners
-    private transient ArrayList<EightPuzzleListener> listeners = new ArrayList<EightPuzzleListener>(3);
+    private transient ArrayList<MontaCargasListener> listeners = new ArrayList<MontaCargasListener>(3);
 
-    public synchronized void removeListener(EightPuzzleListener l) {
+    public synchronized void removeListener(MontaCargasListener l) {
         if (listeners != null && listeners.contains(l)) {
             listeners.remove(l);
         }
     }
 
-    public synchronized void addListener(EightPuzzleListener l) {
+    public synchronized void addListener(MontaCargasListener l) {
         if (!listeners.contains(l)) {
             listeners.add(l);
         }
     }
 
-    public void firePuzzleChanged(EightPuzzleEvent pe) {
-        for (EightPuzzleListener listener : listeners) {
+    public void firePuzzleChanged(MontaCargasEvent pe) {
+        for (MontaCargasListener listener : listeners) {
             listener.puzzleChanged(null);
         }
     }

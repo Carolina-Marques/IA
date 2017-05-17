@@ -1,10 +1,10 @@
-package eightpuzzle;
+package montacargas;
 
 import agent.Heuristic;
 
-public class HeuristicTileDistance extends Heuristic<EightPuzzleProblem, EightPuzzleState>{
+public class HeuristicTileDistance extends Heuristic<MontaCargasProblem, MontaCargasState>{
 
-    public double compute(EightPuzzleState state){
+    public double compute(MontaCargasState state){
         //TODO        
         return 0;
     }

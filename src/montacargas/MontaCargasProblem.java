@@ -1,4 +1,4 @@
-package eightpuzzle;
+package montacargas;
 
 import agent.Action;
 import agent.Problem;
@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EightPuzzleProblem extends Problem<EightPuzzleState> {
+public class MontaCargasProblem extends Problem<MontaCargasState> {
 
-    private EightPuzzleState goalState;
+    private MontaCargasState goalState;
      
     
-    public EightPuzzleProblem(EightPuzzleState initialState) {
+    public MontaCargasProblem(MontaCargasState initialState) {
         super(initialState,new ArrayList<Action>());
         
         actions.add(new ActionUp());
@@ -19,21 +19,21 @@ public class EightPuzzleProblem extends Problem<EightPuzzleState> {
         actions.add(new ActionDown());
         actions.add(new ActionLeft());
         
-        this.goalState = new EightPuzzleState(EightPuzzleState.goalMatrix);
+        this.goalState = new MontaCargasState(MontaCargasState.goalMatrix);
     }
 
     @Override
-    public boolean isGoal(EightPuzzleState state) {
+    public boolean isGoal(MontaCargasState state) {
         return state.equals(goalState);
     }
 
     @Override
-    public List<EightPuzzleState> executeActions(EightPuzzleState state) {
-        List<EightPuzzleState> successors = new LinkedList<EightPuzzleState>();
+    public List<MontaCargasState> executeActions(MontaCargasState state) {
+        List<MontaCargasState> successors = new LinkedList<MontaCargasState>();
        
         for(Action a: actions){
             if (a.isValid(state)){
-                EightPuzzleState sucessor = (EightPuzzleState) state.clone();
+                MontaCargasState sucessor = (MontaCargasState) state.clone();
                 
                 a.execute(sucessor);
                 //ou sucessor.executeAction(a);

@@ -1,27 +1,27 @@
-package eightpuzzle;
+package montacargas;
 
 import agent.Agent;
 import java.io.File;
 import java.io.IOException;
 
-public class EightPuzzleAgent extends Agent<EightPuzzleState>{
+public class MontaCargasAgent extends Agent<MontaCargasState>{
     
-    protected EightPuzzleState initialEnvironment;    
+    protected MontaCargasState initialEnvironment;    
     
-    public EightPuzzleAgent(EightPuzzleState environemt) {
+    public MontaCargasAgent(MontaCargasState environemt) {
         super(environemt);
-        initialEnvironment = (EightPuzzleState) environemt.clone();
+        initialEnvironment = (MontaCargasState) environemt.clone();
         heuristics.add(new HeuristicTileDistance());
         heuristics.add(new HeuristicTilesOutOfPlace());
         heuristic = heuristics.get(0);
     }
             
-    public EightPuzzleState resetEnvironment(){
-        environment = (EightPuzzleState) initialEnvironment.clone();
+    public MontaCargasState resetEnvironment(){
+        environment = (MontaCargasState) initialEnvironment.clone();
         return environment;
     }
                  
-    public EightPuzzleState readInitialStateFromFile(File file) throws IOException {
+    public MontaCargasState readInitialStateFromFile(File file) throws IOException {
         java.util.Scanner scanner = new java.util.Scanner(file);
         int tamanho = scanner.nextInt();
         int[][] matrix = new int [tamanho][tamanho];
@@ -32,7 +32,7 @@ public class EightPuzzleAgent extends Agent<EightPuzzleState>{
             }
             scanner.nextLine();
         }
-        initialEnvironment = new EightPuzzleState(matrix);
+        initialEnvironment = new MontaCargasState(matrix);
         resetEnvironment();
         return environment;
     }

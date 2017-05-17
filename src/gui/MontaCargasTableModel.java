@@ -1,15 +1,15 @@
 package gui;
 
-import eightpuzzle.EightPuzzleEvent;
-import eightpuzzle.EightPuzzleListener;
-import eightpuzzle.EightPuzzleState;
+import montacargas.MontaCargasEvent;
+import montacargas.MontaCargasState;
 import javax.swing.table.AbstractTableModel;
+import montacargas.MontaCargasListener;
 
-public class PuzzleTableModel extends AbstractTableModel implements EightPuzzleListener{
+public class MontaCargasTableModel extends AbstractTableModel implements MontaCargasListener{
 
-    private EightPuzzleState puzzle;
+    private MontaCargasState puzzle;
 
-    public PuzzleTableModel(EightPuzzleState puzzle) {
+    public MontaCargasTableModel(MontaCargasState puzzle) {
         if(puzzle == null){
             throw new NullPointerException("Puzzle cannot be null");
         }
@@ -29,7 +29,7 @@ public class PuzzleTableModel extends AbstractTableModel implements EightPuzzleL
         return new Integer(puzzle.getTileValue(row, col));
     }
 
-    public void puzzleChanged(EightPuzzleEvent pe){
+    public void puzzleChanged(MontaCargasEvent pe){
         fireTableDataChanged();
         try{
             Thread.sleep(500);
@@ -37,7 +37,7 @@ public class PuzzleTableModel extends AbstractTableModel implements EightPuzzleL
         }
     }
 
-    public void setPuzzle(EightPuzzleState puzzle){
+    public void setPuzzle(MontaCargasState puzzle){
         if(puzzle == null){
           throw new NullPointerException("Puzzle cannot be null");
         }

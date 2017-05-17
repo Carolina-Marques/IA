@@ -2,9 +2,9 @@ package gui;
 
 import agent.Heuristic;
 import agent.Solution;
-import eightpuzzle.EightPuzzleAgent;
-import eightpuzzle.EightPuzzleProblem;
-import eightpuzzle.EightPuzzleState;
+import montacargas.MontaCargasAgent;
+import montacargas.MontaCargasProblem;
+import montacargas.MontaCargasState;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -39,12 +39,12 @@ public class MainFrame extends JFrame {
                                      {0, 3, 0, 2, 7, 0},
                                      {0, 3, 0, 0, 0, 0},
                                      {0, 8, 8, 8, 8, 0}};
-    private EightPuzzleAgent agent = new EightPuzzleAgent(new EightPuzzleState(initialMatrix));
+    private MontaCargasAgent agent = new MontaCargasAgent(new MontaCargasState(initialMatrix));
     private JComboBox comboBoxSearchMethods;
     private JComboBox comboBoxHeuristics;
     private JLabel labelSearchParameter = new JLabel("limit/beam size:");
     private JTextField textFieldSearchParameter = new JTextField("0", 5);
-    private PuzzleTableModel puzzleTableModel;
+    private MontaCargasTableModel puzzleTableModel;
     private JTable tablePuzzle = new JTable();
     private JButton buttonInitialState = new JButton("Read initial state");
     private JButton buttonSolve = new JButton("Solve");
@@ -117,12 +117,12 @@ public class MainFrame extends JFrame {
     }
 
     private void configureTabel(JTable table) {
-        puzzleTableModel = new PuzzleTableModel(agent.getEnvironment());
+        puzzleTableModel = new MontaCargasTableModel(agent.getEnvironment());
         tablePuzzle.setModel(puzzleTableModel);
         tablePuzzle.setShowGrid(false);
         tablePuzzle.setRowMargin(0);
         tablePuzzle.getColumnModel().setColumnMargin(0);
-        table.setDefaultRenderer(Object.class, new PuzzleTileCellRenderer());
+        table.setDefaultRenderer(Object.class, new MontaCargasTileCellRenderer());
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setPreferredWidth(Properties.CELL_WIDTH);
         }
@@ -177,7 +177,7 @@ public class MainFrame extends JFrame {
                 buttonStop.setEnabled(true);
                 try {
                     prepareSearchAlgorithm();
-                    EightPuzzleProblem problem = new EightPuzzleProblem((EightPuzzleState) agent.getEnvironment().clone());
+                    MontaCargasProblem problem = new MontaCargasProblem((MontaCargasState) agent.getEnvironment().clone());
                     agent.solveProblem(problem);
                 } catch (Exception e) {
                     e.printStackTrace(System.err);
