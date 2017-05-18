@@ -1,9 +1,14 @@
 package montacargas;
 
 import agent.Action;
+import agent.Peca;
+import agent.Posicao;
 import agent.State;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import utils.Direcao;
 
 public class MontaCargasState extends State implements Cloneable {
 
@@ -13,15 +18,16 @@ public class MontaCargasState extends State implements Cloneable {
                                        {0, 0, 0, 0, 0, 0},
                                        {0, 0, 0, 0, 0, 0},
                                        {0, 0, 0, 0, 0, 0}};
-    static final int[] linesfinalMatrix = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4};
-    static final int[] colsfinalMatrix = {0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2 ,3 ,4 ,5 ,0 , 1, 2 ,3 ,4 ,5 };
+    //static final int[] linesfinalMatrix = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4};
+    //static final int[] colsfinalMatrix = {0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2 ,3 ,4 ,5 ,0 , 1, 2 ,3 ,4 ,5 };
     public static final int SIZE = 5;
     private int[][] matrix;
     private int lineBlank;
     private int columnBlank;
     public int numberPieces=0;
-
+    
     public MontaCargasState(int[][] matrix) {
+        List<Peca> pecas = new ArrayList<Peca>();
         this.matrix = new int[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -30,18 +36,56 @@ public class MontaCargasState extends State implements Cloneable {
                     lineBlank = i;
                     columnBlank = j;                   
                 } else {
-                    /*if(this.matrix[i][j] == this.matrix[i-1][j]){
-                        lineBlank = i;
-                        columnBlank = j;
-                    } else {*/
-                        numberPieces++;
-                    //}
+                    switch(matrix[i][j]){
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            Peca p = new Peca(2,Direcao.HORIZONTAL,new Posicao(i,j));
+                            if(isPecaValida(p,pecas)){
+                                pecas.add(p);
+                                System.out.println("ENTROU");
+                            }
+                            break;
+                    }
+                    //numberPieces++;
+                }
+                if(matrix[i][j] == matrix[2][5]){
+                    
                 }
             }
         }
-        System.out.println("Numero de peças: "+numberPieces);
+        for(Peca peca: pecas){
+            System.out.println(peca.toString());
+        }
     }
+    
+    public boolean isPecaValida(Peca peca, List<Peca> lista) {
+        //List<Peca> porAnalisar = new ArrayList<Peca>();
+        //List<Peca> analisados = new ArrayList<Peca>();
+        /*
+        porAnalisar.add(peca);
 
+        while (!porAnalisar.isEmpty()) {
+            Peca aAnalisar = porAnalisar.remove(0);
+            if (analisados.contains(aAnalisar)) {
+                continue;
+            }
+            analisados.add(aAnalisar);
+            porAnalisar.addAll(getAllPecas());
+        }*/
+        
+        //porAnalisar.addAll(getAllPecas());
+        for(Peca p: lista){
+            if(lista.contains(peca))
+                return true;
+        }
+        return false;
+    }
+    
     public void executeAction(Action action) {
         action.execute(this);
         firePuzzleChanged(null);
@@ -164,4 +208,23 @@ public class MontaCargasState extends State implements Cloneable {
             listener.puzzleChanged(null);
         }
     }
+
+    public List<Peca> getAllPecas() {
+        List<Peca> pecas = new ArrayList<Peca>();
+        for(Peca peca: pecas){
+            pecas.add(peca);
+        }
+       return pecas;
+    }
+    
+    public List<Posicao> verificarPosicoesPeca(Peca peca){
+    List<Posicao> posicoes = new ArrayList<Posicao>();
+    switch(peca.getNumPecas()){
+            case 2:
+                
+                break;
+        }
+    return posicoes;
+    }
+    
 }

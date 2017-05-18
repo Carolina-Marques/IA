@@ -9,7 +9,7 @@ package utils;
  *
  * @author mcaro
  */
-public enum Direction {
+public enum Direcao {
     HORIZONTAL, VERTICAL;
     
 }
